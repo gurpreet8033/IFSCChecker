@@ -1,6 +1,8 @@
 $(document).ready(()=>{
     
-    $("#p1").hide();
+    var error = $("#p1");
+    var table = $("#datatb"); 
+    error.hide();
     $("#b1").click(function(){  
         // $.ajax({
         //     datatype: "json",
@@ -34,14 +36,14 @@ $(document).ready(()=>{
             var datatxt="<tbody>";
             for(var key in data){
                 datatxt+="<tr><td>"+key+"</td><td>"+data[key]+"</td></tr>";
-                $("#p1").hide();
-
+                error.hide();
+                table.show();
             }
             datatxt += "</tbody>";
-            $("#datatb").html(datatxt);
+            table.html(datatxt);
         }).fail(function(){
-            $("#p1").show();
-            
+            table.hide();
+            error.show();            
         });
     });
 });
